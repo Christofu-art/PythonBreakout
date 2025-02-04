@@ -24,8 +24,47 @@ class brick:
         self.isDead = False
     def draw(self):
         pygame.draw.rect(screen, self.color, (self.xpos, self.ypos, 100, 50))
+    def draw(self):
+        if not self.isDead:
+            pygame.draw.rect(screen, self.color, (self.xpos, self.ypos, 100, 50)) # Width and height are 100 and 50
     #bounding box collision
     def collide(self, ball_x, ball_y):
+        if b1.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b2.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b3.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b4.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b5.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b6.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b7.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b8.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b9.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b10.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b11.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
+        if b12.collide(ball_x, ball_y):
+            bVy *= -1
+            p1Score += 1
         if not self.isDead:
             if (ball_x + ball_size > self.xpos and
                 ball_x < self.xpos + 100 and  # Width of brick is 100
@@ -34,6 +73,7 @@ class brick:
                 self.isDead = True
                 return True
         return False
+    
 
 # The clock will be used to control how fast the screen updates
 clock = pygame.time.Clock()
@@ -61,13 +101,15 @@ while not doExit: #GAME LOOP####################################################
     #game logic will go here-------------------------------------
     bx += bVx
     by += bVy
+    
+    
 
     #reflect ball off side walls of screen
     if bx < 0: #hit left side 
         bVx *= -1
-        p1Score += 1
         
-    if bx + 100 > 700: #hit right side
+        
+    if bx > 700: #hit right side
         bVx *= -1
         
     if by < 0 or by + 20 > 500:
@@ -76,7 +118,7 @@ while not doExit: #GAME LOOP####################################################
         
         
         #ball-paddle relfection
-    if bx < p1x + 50 and by + 20 > p1y and by < p1y + 100:
+    if bx < p1x + 50 and by + 0 > p1y and by < p1y + 0:
         bVx *= -1
 
     keys = pygame.key.get_pressed()
