@@ -27,6 +27,14 @@ class brick:
             pygame.draw.rect(screen, self.color, (self.xpos, self.ypos, 100, 50)) # Width and height are 100 and 50
     #bounding box collision
     def collide(self, ball_x, ball_y):
+        if not self.isDead:
+            if (ball_x + ball_size > self.xpos and
+                ball_x < self.xpos + 100 and  # Width of brick is 100
+                ball_y + ball_size > self.ypos and
+                ball_y < self.ypos + 50):    # Height of brick is 50
+                self.isDead = True
+                return True
+        return False
         # Ball collision with each brick
         if b1.collide(ball_x, ball_y):
             bvy *= -1
@@ -52,14 +60,6 @@ class brick:
             bvy *= -1
         if b12.collide(ball_x, ball_y):
             bvy *= -1
-        if not self.isDead:
-            if (ball_x + ball_size > self.xpos and
-                ball_x < self.xpos + 100 and  # Width of brick is 100
-                ball_y + ball_size > self.ypos and
-                ball_y < self.ypos + 50):    # Height of brick is 50
-                self.isDead = True
-                return True
-        return False
     
 
 # The clock will be used to control how fast the screen updates
