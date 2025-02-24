@@ -110,14 +110,14 @@ while not doExit: #GAME LOOP####################################################
         bVx *= -1
         
         
-    if bx + 100 > 700: #hit right side
+    if bx > 700: #hit right side
         bVx *= -1
         
     if by < 0 or by + 20 > 500:
         bVy *= -1
        
         #ball-paddle relfection
-    if bx < p1x + 20 and by + 20 > p1y and by < p1y + 20:
+    if bx < p1x + 0 and by + 0 > p1y + 480 and by < p1y + 100:
         bVx *= -1
 
     keys = pygame.key.get_pressed()
